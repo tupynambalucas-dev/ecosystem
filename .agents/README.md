@@ -32,6 +32,7 @@ MCP servers bundled in `@tupynambalucas-dev/agent-mesh` execute via self-contain
 
 - [plugins.json](./plugins.json): Runtime plugin discovery manifest.
 - [AGENTS.md](./AGENTS.md): Bounded context router for `.agents/`.
+- [plans/](./plans/): Portfolio-level architectural plans, technical analyses, and governance reports.
 
 ---
 

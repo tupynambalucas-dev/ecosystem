@@ -15,6 +15,7 @@ This bounded context ([.agents/](./)) manages the lifecycle, personas, tools, an
 
 - **[plugins.json](./plugins.json)**: Antigravity plugin discovery manifest referencing the installed `@tupynambalucas-dev/agent-mesh` umbrella package plugins via `commercial/omnichannel/node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`.
 - **[README.md](./README.md)**: Developer and agent guide for ecosystem plugin integration.
+- **[plans/](./plans/)**: Portfolio-level architectural plans, technical analyses, and governance reports.
 
 ---
 
