@@ -13,7 +13,7 @@ This bounded context ([.agents/](./)) manages the lifecycle, personas, tools, an
 
 ## 1. Directory Architecture
 
-- **[plugins.json](./plugins.json)**: Antigravity plugin discovery manifest referencing the installed `@tupynambalucas-dev/agent-mesh` umbrella package plugins via `commercial/omnichannel/node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`.
+- **[plugins.json](./plugins.json)**: Antigravity plugin discovery manifest referencing local `agent-mesh` plugins via relative path (`../org-core/agent-mesh/plugins/packages` / `../../org-core/agent-mesh/plugins/packages`).
 - **[README.md](./README.md)**: Developer and agent guide for ecosystem plugin integration.
 - **[plans/](./plans/)**: Portfolio-level architectural plans, technical analyses, and governance reports.
 
@@ -21,7 +21,7 @@ This bounded context ([.agents/](./)) manages the lifecycle, personas, tools, an
 
 ## 2. Agent Constraints & Portfolio Consumption
 
-1. **Umbrella Package Discovery**: The meta-repository discovers organizational agent capabilities from the installed `@tupynambalucas-dev/agent-mesh` package in `commercial/omnichannel`.
+1. **Local Relative Mesh Discovery**: At the meta-repository root (`org-ecosystem`), `.agents/plugins.json` resolves organizational agent capabilities directly from the local `org-core/agent-mesh/plugins/packages` directory on disk.
 2. **Sovereign Repositories**: The subtrees under `commercial/`, `internal/`, and `oss/` are independent Git repositories managed via Mani. Agents MUST respect each child project's bounded context and never commit child repository changes into the root meta-repository.
 3. **Root Script Ban**: Agents MUST NEVER create temporary or utility scripts directly in the meta-repository root.
 4. **Environment Configuration**: Sensitive environment variables in `.env.example` must follow the enterprise template with `<YOUR_VARIABLE_NAME>` placeholders.

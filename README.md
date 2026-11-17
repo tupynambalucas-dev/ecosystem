@@ -64,8 +64,8 @@ Open [`tupynambalucas-dev-ecosystem.code-workspace`](./tupynambalucas-dev-ecosys
 
 1. **Secret Resolution via Infisical & `.env` Templates**:
    Each managed product monorepo defines its own project-scoped Infisical environment and `.env.example` template. Secrets are injected at runtime via `infisical run --projectId <PROJECT_ID> --env dev -- <command>` or local `.env` files excluded from Git.
-2. **AI Agent Mesh Consumption (`@tupynambalucas-dev/agent-mesh`)**:
-   Portfolio monorepos consume the organization's 10 domain plugins and 8 sovereign MCP servers via `catalogs.plugins-stack` (`'github:tupynambalucas-dev/agent-mesh'`) in `pnpm-workspace.yaml` and register `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages` in `.agents/plugins.json`.
+2. **AI Agent Mesh Consumption (`agent-mesh`)**:
+   At the `org-ecosystem` meta-repository level, [`.agents/plugins.json`](./.agents/plugins.json) imports the 10 domain plugins and 8 sovereign MCP servers directly from the local `../org-core/agent-mesh/plugins/packages` directory (`../../org-core/agent-mesh/plugins/packages`). When child product monorepos run in standalone mode, they consume `@tupynambalucas-dev/agent-mesh` via `catalogs.plugins-stack` (`'github:tupynambalucas-dev/agent-mesh'`) in `pnpm-workspace.yaml`.
 3. **Mani Ignore & Search Indexing Invariant**:
    [`mani.yaml`](./mani.yaml) enforces `sync_gitignore: false`. Managed repository directories (`commercial/`, `internal/`, `oss/`) are ignored in [`.gitignore`](./.gitignore) while explicitly un-ignored in [`.ignore`](./.ignore) and [`.rgignore`](./.rgignore) so `@` file mentions and workspace search index all portfolio code seamlessly.
 

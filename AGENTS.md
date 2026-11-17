@@ -48,9 +48,9 @@ mani sync --tags oss
 
 ## AI Agent Plugin Consumption
 
-Portfolio applications consume domain plugins and sovereign MCP servers from the `@tupynambalucas-dev/agent-mesh` umbrella package:
-- **Package Dependency**: Pinned via `catalogs.plugins-stack` (`github:tupynambalucas-dev/agent-mesh`) in child monorepos.
-- **Runtime Discovery**: Registered in `.agents/plugins.json` pointing to `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`.
+`org-ecosystem` and its portfolio applications consume domain plugins and sovereign MCP servers from `agent-mesh`:
+- **Meta-Repository Mode (`org-ecosystem`)**: Root [`.agents/plugins.json`](./.agents/plugins.json) imports local plugins directly via relative path (`../org-core/agent-mesh/plugins/packages` / `../../org-core/agent-mesh/plugins/packages`).
+- **Standalone Monorepo Mode (`omnichannel`, `tessel`)**: Pinned via `catalogs.plugins-stack` (`github:tupynambalucas-dev/agent-mesh`) with fallback to `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`.
 - **Sovereign Execution**: MCP servers run via self-contained launchers (`scripts/launcher.cjs`) and committed bundles (`dist/bin.cjs`).
 
 ## Architectural Plans & Artifact Dual-Storage Standard
