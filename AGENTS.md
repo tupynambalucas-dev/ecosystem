@@ -7,7 +7,7 @@ This document serves as the root context router (Layer 1) for AI agents operatin
 
 - [README.md](./README.md): Primary developer documentation and Mani portfolio orchestration runbook.
 - [mani.yaml](./mani.yaml): Declarative multi-repository manifest managing product repositories, remotes, and batch tasks.
-- [org-ecosystem.code-workspace](./org-ecosystem.code-workspace): Canonical multi-root IDE workspace binding portfolio solutions.
+- [tupynambalucas-dev-ecosystem.code-workspace](./tupynambalucas-dev-ecosystem.code-workspace): Canonical multi-root IDE workspace binding portfolio solutions.
 - [LICENSE](./LICENSE): Apache License 2.0 governing meta-repository orchestration assets.
 - [commercial/omnichannel](./commercial/omnichannel/README.md): Commercial omnichannel messaging engine and client platform (Turborepo Monorepo).
 - [internal/tessel](./internal/tessel/README.md): Proprietary enterprise core platform and internal software asset (Turborepo Monorepo).
@@ -56,10 +56,10 @@ Portfolio applications consume domain plugins and sovereign MCP servers from the
 ## Architectural Plans & Artifact Dual-Storage Standard
 
 Architectural blueprints, technical plans, and master plans follow strict enterprise storage standards:
-- **Storage Location**: Blueprints reside in `<repo>/.agents/plans/<plan-slug>/`.
+- **Storage Location**: Blueprints, analyses, and reports reside in `<target-repo>/.agents/plans/<artifact-slug>/` (or `<target-repo>/.agents/plans/<artifact-slug>.md`) within the respective repository for which the artifact is created. Creating a `plans/` directory at the root of any repository is strictly prohibited.
 - **Topologies**: Topology 1 (Single-File Plan) for atomic refactors/features; Topology 2 (Multi-Artifact Plan Suite) for multi-domain frameworks with master `README.md` and numbered domain documents.
-- **Dual-Storage Invariant**: Whenever an agent creates a plan artifact in the Antigravity conversation directory (`<appDataDir>/brain/<conversation-id>/`), an identical synchronized copy MUST ALWAYS be mirrored in `<repo>/.agents/plans/<plan-slug>/`.
-- **Ignore & Index Triad**: All repositories ignore `.agents/plans/` and `plans/` in `.gitignore`, while explicitly un-ignoring them in `.ignore` and `.rgignore` (`!.agents/plans/`, `!.agents/plans/**`, `!plans/`, `!plans/**`) and setting `"search.useIgnoreFiles": false` in `.vscode/settings.json` so files can always be attached with `@`.
+- **Dual-Storage Invariant**: Whenever an agent creates a plan artifact in the Antigravity conversation directory (`<appDataDir>/brain/<conversation-id>/`), an identical synchronized copy MUST ALWAYS be mirrored in `<target-repo>/.agents/plans/<artifact-slug>/` (or `<target-repo>/.agents/plans/<artifact-slug>.md`).
+- **Ignore & Index Triad**: All repositories ignore `.agents/plans/` in `.gitignore`, while explicitly un-ignoring it in `.ignore` and `.rgignore` (`!.agents/plans/`, `!.agents/plans/**`) and setting `"search.useIgnoreFiles": false` in `.vscode/settings.json` so files can always be attached with `@`.
 
 ## Required Skills
 

@@ -56,7 +56,7 @@ flowchart TD
 
 ### Multi-Root IDE Workspace
 
-Open [`org-ecosystem.code-workspace`](./org-ecosystem.code-workspace) in VS Code or Antigravity IDE to mount all portfolio repositories (`org-ecosystem`, `omnichannel`, `tessel`) in a unified workspace with integrated Mani tasks.
+Open [`tupynambalucas-dev-ecosystem.code-workspace`](./tupynambalucas-dev-ecosystem.code-workspace) in VS Code or Antigravity IDE to mount all portfolio repositories (`org-ecosystem`, `omnichannel`, `tessel`) in a unified workspace with integrated Mani tasks.
 
 ---
 
