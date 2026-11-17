@@ -6,7 +6,7 @@ The `.agents/` directory is the Bounded Context for AI behavior customization, t
 
 ## Architecture & Integration
 
-Our AI agent configuration consumes sovereign domain plugins via the `@tupynambalucas-dev/agent-mesh` umbrella package:
+Our AI agent configuration at the `org-ecosystem` meta-repository root consumes the local `agent-mesh` domain plugins directly via relative filesystem path:
 
 ### 1. Plugin Discovery Manifest (`plugins.json`)
 
@@ -14,13 +14,16 @@ Our AI agent configuration consumes sovereign domain plugins via the `@tupynamba
 {
   "entries": [
     {
-      "path": "commercial/omnichannel/node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages"
+      "path": "../org-core/agent-mesh/plugins/packages"
+    },
+    {
+      "path": "../../org-core/agent-mesh/plugins/packages"
     }
   ]
 }
 ```
 
-All 10 domain plugins (`appsheet`, `atelier`, `docusaurus`, `github-flow`, `github-org`, `gwork`, `repo`, `research`, `secrets`, `web`) and 8 sovereign MCP servers are discovered simultaneously via the installed package in `omnichannel`.
+All 10 domain plugins (`appsheet`, `atelier`, `docusaurus`, `github-flow`, `github-org`, `gwork`, `repo`, `research`, `secrets`, `web`) and 8 sovereign MCP servers are loaded directly from the local `org-core/agent-mesh` repository on the workstation.
 
 ### 2. Sovereign MCP Launchers
 
