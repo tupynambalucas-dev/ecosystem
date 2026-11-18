@@ -9,6 +9,10 @@
       "path": "commercial/omnichannel"
     },
     {
+      "name": "elo-organico (Commercial SaaS Monorepo)",
+      "path": "commercial/elo-organico"
+    },
+    {
       "name": "tessel (Proprietary Enterprise Monorepo)",
       "path": "internal/tessel"
     }

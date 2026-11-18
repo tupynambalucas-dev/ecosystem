@@ -15,6 +15,16 @@ projects:
       - omnichannel
       - monorepo
 
+  elo-organico:
+    path: commercial/elo-organico
+    url: git@github.com:tupynambalucas-dev/elo-organico.git
+    desc: Commercial organic product sharing and community management platform (Turborepo Monorepo).
+    tags:
+      - commercial
+      - saas
+      - elo-organico
+      - monorepo
+
   # --- PROPRIETARY INTERNAL ASSETS ---
   tessel:
     path: internal/tessel

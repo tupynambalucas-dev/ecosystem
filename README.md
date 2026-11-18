@@ -31,6 +31,7 @@ flowchart TD
         OSS["oss/ (Open Source Community Tools)"]
 
         Omnichannel["omnichannel (Turborepo Monorepo)"]
+        EloOrganico["elo-organico (Turborepo Monorepo)"]
         Tessel["tessel (Turborepo Monorepo)"]
 
         OrgEco --> Commercial
@@ -38,6 +39,7 @@ flowchart TD
         OrgEco --> OSS
 
         Commercial --> Omnichannel
+        Commercial --> EloOrganico
         Internal --> Tessel
     end
 
@@ -51,12 +53,13 @@ flowchart TD
 | Repository | Path / Namespace | Branch | Documentation | Agent Context | Purpose |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | [`omnichannel`](./commercial/omnichannel/README.md) | `commercial/omnichannel` | `main` | [`README.md`](./commercial/omnichannel/README.md) | [`AGENTS.md`](./commercial/omnichannel/AGENTS.md) | Commercial multi-tenant omnichannel messaging gateway and FSM workflow engine for WhatsApp and Instagram. |
+| [`elo-organico`](./commercial/elo-organico/README.md) | `commercial/elo-organico` | `main` | [`README.md`](./commercial/elo-organico/README.md) | [`AGENTS.md`](./commercial/elo-organico/AGENTS.md) | Commercial organic product sharing and community management platform (Turborepo Monorepo). |
 | [`tessel`](./internal/tessel/README.md) | `internal/tessel` | `main` | [`README.md`](./internal/tessel/README.md) | [`AGENTS.md`](./internal/tessel/AGENTS.md) | Proprietary hybrid spatial social ecosystem, WebGPU/Three.js 3D simulation engine, and distributed API core. |
 | `oss/*` | `oss/` | `main` | *(per project)* | *(per project)* | Open-source developer tools, public SDKs, and community extensions. |
 
 ### Multi-Root IDE Workspace
 
-Open [`tupynambalucas-dev-ecosystem.code-workspace`](./tupynambalucas-dev-ecosystem.code-workspace) in VS Code or Antigravity IDE to mount all portfolio repositories (`org-ecosystem`, `omnichannel`, `tessel`) in a unified workspace with integrated Mani tasks.
+Open [`tupynambalucas-dev-ecosystem.code-workspace`](./tupynambalucas-dev-ecosystem.code-workspace) in VS Code or Antigravity IDE to mount all portfolio repositories (`org-ecosystem`, `omnichannel`, `elo-organico`, `tessel`) in a unified workspace with integrated Mani tasks.
 
 ---
 
