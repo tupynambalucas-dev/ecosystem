@@ -17,7 +17,7 @@ Our AI agent configuration at the `org-ecosystem` meta-repository root consumes 
       "path": "../org-core/agent-mesh/plugins/packages"
     },
     {
-      "path": "../../org-core/agent-mesh/plugins/packages"
+      "path": "../org-core/platform/.agents/plugins"
     }
   ]
 }
