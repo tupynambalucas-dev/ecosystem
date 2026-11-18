@@ -14,16 +14,13 @@ Our AI agent configuration at the `org-ecosystem` meta-repository root consumes 
 {
   "entries": [
     {
-      "path": "../org-core/agent-mesh/plugins/packages"
-    },
-    {
-      "path": "../org-core/platform/.agents/plugins"
+      "path": ".agents/agent-mesh"
     }
   ]
 }
 ```
 
-All 10 domain plugins (`appsheet`, `atelier`, `docusaurus`, `github-flow`, `github-org`, `gwork`, `repo`, `research`, `secrets`, `web`) and 8 sovereign MCP servers are loaded directly from the local `org-core/agent-mesh` repository on the workstation.
+All 10 domain plugins (`appsheet`, `atelier`, `docusaurus`, `github-flow`, `github-org`, `gwork`, `repo`, `research`, `secrets`, `web`) and 8 sovereign MCP servers are loaded directly from the local `org-core/agent-mesh/plugins/packages` repository on the workstation via the `.agents/agent-mesh` directory junction (staying within Antigravity's workspace root confinement).
 
 ### 2. Sovereign MCP Launchers
 
