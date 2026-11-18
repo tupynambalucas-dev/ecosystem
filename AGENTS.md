@@ -10,6 +10,7 @@ This document serves as the root context router (Layer 1) for AI agents operatin
 - [tupynambalucas-dev-ecosystem.code-workspace](./tupynambalucas-dev-ecosystem.code-workspace): Canonical multi-root IDE workspace binding portfolio solutions.
 - [LICENSE](./LICENSE): Apache License 2.0 governing meta-repository orchestration assets.
 - [commercial/omnichannel](./commercial/omnichannel/README.md): Commercial omnichannel messaging engine and client platform (Turborepo Monorepo).
+- [commercial/elo-organico](./commercial/elo-organico/README.md): Commercial organic product sharing and community management platform (Turborepo Monorepo).
 - [internal/tessel](./internal/tessel/README.md): Proprietary enterprise core platform and internal software asset (Turborepo Monorepo).
 - [oss/](./oss/): Directory for open-source community repositories and SDKs.
 
@@ -50,7 +51,7 @@ mani sync --tags oss
 
 `org-ecosystem` and its portfolio applications consume domain plugins and sovereign MCP servers from `agent-mesh`:
 - **Meta-Repository Mode (`org-ecosystem`)**: Root [`.agents/plugins.json`](./.agents/plugins.json) imports local plugins via `.agents/agent-mesh` (directory junction to `../org-core/agent-mesh/plugins/packages`).
-- **Standalone Monorepo Mode (`omnichannel`, `tessel`)**: Pinned via `catalogs.plugins-stack` (`github:tupynambalucas-dev/agent-mesh`) with fallback to `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`.
+- **Standalone Monorepo Mode (`omnichannel`, `elo-organico`, `tessel`)**: Pinned via `catalogs.plugins-stack` (`github:tupynambalucas-dev/agent-mesh`) with fallback to `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`.
 - **Sovereign Execution**: MCP servers run via self-contained launchers (`scripts/launcher.cjs`) and committed bundles (`dist/bin.cjs`).
 
 ## Architectural Plans & Artifact Dual-Storage Standard
