@@ -13,7 +13,7 @@ This bounded context ([.agents/](./)) manages the lifecycle, personas, tools, an
 
 ## 1. Directory Architecture
 
-- **[plugins.json](./plugins.json)**: Antigravity plugin discovery manifest referencing local `agent-mesh` plugins via relative path (`../org-core/agent-mesh/plugins/packages` / `../../org-core/agent-mesh/plugins/packages`).
+- **[plugins.json](./plugins.json)**: Antigravity plugin discovery manifest referencing local `agent-mesh` plugins via workspace-relative path (`../org-core/agent-mesh/plugins/packages` and `../org-core/platform/.agents/plugins`).
 - **[README.md](./README.md)**: Developer and agent guide for ecosystem plugin integration.
 - **[plans/](./plans/)**: Portfolio-level architectural plans, technical analyses, and governance reports.
 
