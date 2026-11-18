@@ -49,7 +49,7 @@ mani sync --tags oss
 ## AI Agent Plugin Consumption
 
 `org-ecosystem` and its portfolio applications consume domain plugins and sovereign MCP servers from `agent-mesh`:
-- **Meta-Repository Mode (`org-ecosystem`)**: Root [`.agents/plugins.json`](./.agents/plugins.json) imports local plugins directly via workspace-relative path (`../org-core/agent-mesh/plugins/packages` and `../org-core/platform/.agents/plugins`).
+- **Meta-Repository Mode (`org-ecosystem`)**: Root [`.agents/plugins.json`](./.agents/plugins.json) imports local plugins via `.agents/agent-mesh` (directory junction to `../org-core/agent-mesh/plugins/packages`).
 - **Standalone Monorepo Mode (`omnichannel`, `tessel`)**: Pinned via `catalogs.plugins-stack` (`github:tupynambalucas-dev/agent-mesh`) with fallback to `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`.
 - **Sovereign Execution**: MCP servers run via self-contained launchers (`scripts/launcher.cjs`) and committed bundles (`dist/bin.cjs`).
 

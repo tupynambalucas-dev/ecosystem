@@ -1,10 +1,7 @@
 {
   "entries": [
     {
-      "path": "../org-core/agent-mesh/plugins/packages"
-    },
-    {
-      "path": "../org-core/platform/.agents/plugins"
+      "path": ".agents/agent-mesh"
     }
   ]
 }
