@@ -1,4 +1,4 @@
-# lefthook.yml - tupynambalucas-dev/org-ecosystem
+# lefthook.yml - tupynambalucas-dev/ecosystem
 # Authoritative Git Hook Configuration (Evil Martians Lefthook)
 
 pre-commit:

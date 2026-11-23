@@ -1,15 +1,76 @@
 # Manifest specification: https://manicli.com
-# tupynambalucas-dev Product Portfolio & Ecosystem Manifest
+# tupynambalucas-dev Product Portfolio & Ecosystem Sub-Manifest (org/ecosystem/mani.yaml)
 
 sync_gitignore: false
+sync_remotes: false
+auto_discovery: false
+
+specs:
+  default:
+    output: stream
+    parallel: false
+    ignore_errors: false
+    ignore_non_existing: true
+
+  parallel-stream:
+    output: stream
+    parallel: true
+    forks: 4
+    ignore_errors: false
+    ignore_non_existing: true
+
+  parallel-table:
+    output: table
+    parallel: true
+    forks: 4
+    ignore_errors: false
+    ignore_non_existing: true
+    omit_empty_rows: false
+
+  dirty-table:
+    output: table
+    parallel: true
+    forks: 4
+    ignore_errors: false
+    ignore_non_existing: true
+    omit_empty_rows: true
+
+themes:
+  enterprise:
+    table:
+      border:
+        around: true
+        columns: true
+        header: true
+        rows: true
+
+targets:
+  all:
+    all: true
+  commercial:
+    tags: [commercial]
+  internal:
+    tags: [internal]
+  oss:
+    tags: [oss]
+  clients:
+    tags: [clients]
 
 projects:
+  # --- META-ORCHESTRATOR ROOT ---
+  ecosystem:
+    path: .
+    sync: false
+    desc: Product portfolio orchestrator and ecosystem sub-meta-repository (tupynambalucas-dev/ecosystem).
+    tags: [meta, ecosystem]
+
   # --- COMMERCIAL SAAS SOLUTIONS ---
   omnichannel:
     path: commercial/omnichannel
     url: git@github.com:tupynambalucas-dev/omnichannel.git
     desc: Commercial Omnichannel communication platform and SaaS engine (Turborepo Monorepo).
     tags:
+      - ecosystem
       - commercial
       - saas
       - omnichannel
@@ -20,6 +81,7 @@ projects:
     url: git@github.com:tupynambalucas-dev/elo-organico.git
     desc: Commercial organic product sharing and community management platform (Turborepo Monorepo).
     tags:
+      - ecosystem
       - commercial
       - saas
       - elo-organico
@@ -31,46 +93,54 @@ projects:
     url: git@github.com:tupynambalucas-dev/tessel.git
     desc: Proprietary enterprise core platform and internal software asset (Turborepo Monorepo).
     tags:
+      - ecosystem
       - internal
       - proprietary
       - tessel
       - monorepo
 
-targets:
-  all:
-    all: true
-  commercial:
-    tags: [commercial]
-  internal:
-    tags: [internal]
-  oss:
-    tags: [oss]
-
 tasks:
   status:
     desc: Check Git status across all ecosystem projects
     target: all
+    spec: parallel-stream
     cmd: git status -s
-    spec:
-      output: stream
+
+  dirty:
+    desc: Display table of only ecosystem repositories with uncommitted changes
+    target: all
+    spec: dirty-table
+    theme: enterprise
+    cmd: git status -s
 
   fetch:
     desc: Fetch latest changes from remote origin across all projects
     target: all
+    spec: parallel-stream
     cmd: git fetch origin --prune
-    spec:
-      output: stream
 
   pull:
     desc: Pull latest main branch updates across all projects
     target: all
+    spec: parallel-stream
     cmd: git pull origin main
-    spec:
-      output: stream
 
   branch:
     desc: Display current active branch for all projects
     target: all
+    spec: parallel-table
+    theme: enterprise
     cmd: git branch --show-current
-    spec:
-      output: table
+
+  overview:
+    desc: Comprehensive ecosystem audit table (branch, status, last commit)
+    target: all
+    spec: parallel-table
+    theme: enterprise
+    commands:
+      - name: Branch
+        cmd: git rev-parse --abbrev-ref HEAD
+      - name: Dirty
+        cmd: git status -s
+      - name: Last Commit
+        cmd: git log -1 --format="%h %s (%cr)"

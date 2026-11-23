@@ -4,5 +4,7 @@
 !internal/**
 !oss/
 !oss/**
+!clients/
+!clients/**
 !.agents/plans/
 !.agents/plans/**

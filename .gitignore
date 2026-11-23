@@ -27,6 +27,7 @@ keys/
 commercial/
 internal/
 oss/
+clients/
+
 # Agent Plans Container (Ignored by Git, preserved for local @ attachment via .ignore / .rgignore)
 .agents/plans/
-.agents/agent-mesh/
