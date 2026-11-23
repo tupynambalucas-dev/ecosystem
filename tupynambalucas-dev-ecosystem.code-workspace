@@ -32,7 +32,7 @@
     "files.exclude": {
       "commercial": true,
       "internal": true,
-      "**/.git": false
+      "**/.git": true
     },
     "files.watcherExclude": {
       "**/.git/objects/**": true,
