@@ -30,6 +30,8 @@
       "**/.turbo": true
     },
     "files.exclude": {
+      "commercial": true,
+      "internal": true,
       "**/.git": false
     },
     "files.watcherExclude": {
