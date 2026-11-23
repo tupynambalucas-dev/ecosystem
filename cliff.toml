@@ -1,13 +1,13 @@
-# cliff.toml - git-cliff configuration for tupynambalucas-dev/org-ecosystem
+# cliff.toml - git-cliff configuration for tupynambalucas-dev/ecosystem
 # Authoritative Keep a Changelog + Docusaurus Format Specification
 
 [remote.github]
 owner = "tupynambalucas-dev"
-repo = "org-ecosystem"
+repo = "ecosystem"
 
 [changelog]
 header = """
-# Changelog - @tupynambalucas-dev/org-ecosystem
+# Changelog - @tupynambalucas-dev/ecosystem
 
 <!-- changelog-start -->
 """
@@ -23,9 +23,9 @@ body = """
         {%- set raw_first = commit.raw_message | split(pat="\n") | first | trim -%}
         {%- if commit.remote.pr_number -%}
             {%- set clean_msg = raw_first | replace(from=" (#" ~ commit.remote.pr_number ~ ")", to="") -%}
-        - [#{{ commit.remote.pr_number }}](https://github.com/tupynambalucas-dev/org-ecosystem/pull/{{ commit.remote.pr_number }}) {{ clean_msg }}{% if commit.remote.username %} ([@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }})){% endif %}
+        - [#{{ commit.remote.pr_number }}](https://github.com/tupynambalucas-dev/ecosystem/pull/{{ commit.remote.pr_number }}) {{ clean_msg }}{% if commit.remote.username %} ([@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }})){% endif %}
         {%- else -%}
-        - [{{ commit.id | truncate(length=7, end="") }}](https://github.com/tupynambalucas-dev/org-ecosystem/commit/{{ commit.id }}) {{ raw_first }}{% if commit.remote.username %} ([@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }})){% endif %}
+        - [{{ commit.id | truncate(length=7, end="") }}](https://github.com/tupynambalucas-dev/ecosystem/commit/{{ commit.id }}) {{ raw_first }}{% if commit.remote.username %} ([@{{ commit.remote.username }}](https://github.com/{{ commit.remote.username }})){% endif %}
         {%- endif %}
     {% endfor %}
 {% endfor -%}

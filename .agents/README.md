@@ -1,12 +1,12 @@
 # AI Agents Configuration Hub (`.agents`)
 
-The `.agents/` directory is the Bounded Context for AI behavior customization, tool integration, and knowledge routing within the `org-ecosystem` product portfolio meta-repository.
+The `.agents/` directory is the Bounded Context for AI behavior customization, tool integration, and knowledge routing within the `ecosystem` product portfolio meta-repository.
 
 ---
 
 ## Architecture & Integration
 
-Our AI agent configuration at the `org-ecosystem` meta-repository root consumes the local `agent-mesh` domain plugins directly via relative filesystem path:
+Our AI agent configuration at the `ecosystem` meta-repository root consumes the `agent-mesh` domain plugins directly via relative filesystem path when nested inside `org/` (or via `node_modules` fallback in standalone mode):
 
 ### 1. Plugin Discovery Manifest (`plugins.json`)
 
@@ -14,13 +14,16 @@ Our AI agent configuration at the `org-ecosystem` meta-repository root consumes 
 {
   "entries": [
     {
-      "path": ".agents/agent-mesh"
+      "path": "../agent-mesh/plugins/packages"
+    },
+    {
+      "path": "node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages"
     }
   ]
 }
 ```
 
-All 10 domain plugins (`appsheet`, `atelier`, `docusaurus`, `github-flow`, `github-org`, `gwork`, `repo`, `research`, `secrets`, `web`) and 8 sovereign MCP servers are loaded directly from the local `org-core/agent-mesh/plugins/packages` repository on the workstation via the `.agents/agent-mesh` directory junction (staying within Antigravity's workspace root confinement).
+All 11 domain plugins (`appsheet`, `atelier`, `docusaurus`, `github-actions`, `github-flow`, `github-org`, `github-releases`, `github-repo`, `gwork`, `profile`, `research`, `secrets`, `web`) and 9 sovereign MCP servers are loaded directly from `../agent-mesh/plugins/packages` on the workstation without requiring NTFS directory junctions.
 
 ### 2. Sovereign MCP Launchers
 
@@ -38,4 +41,4 @@ MCP servers bundled in `@tupynambalucas-dev/agent-mesh` execute via self-contain
 
 ## Navigation
 
-- Parent Workspace: [Org-Ecosystem Meta-Repository Root](../README.md)
+- Parent Workspace: [Ecosystem Meta-Repository Root](../README.md)

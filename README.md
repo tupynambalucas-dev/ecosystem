@@ -1,49 +1,52 @@
-# Product Portfolio & Ecosystem Meta-Repository (`tupynambalucas-dev/org-ecosystem`)
+# Product Portfolio & Ecosystem Meta-Repository (`tupynambalucas-dev/ecosystem`)
 
-Central orchestrator and unified multi-repository workspace for customer-facing SaaS products, proprietary internal assets, and open-source community solutions across the `tupynambalucas-dev` organization. This umbrella meta-repository coordinates autonomous product monorepos via [Mani](https://manicli.com) and multi-root IDE workspaces while preserving independent Git histories, branches, release lifecycles, and CI/CD pipelines.
+Central orchestrator and unified multi-repository workspace for customer-facing SaaS products (`commercial/`), proprietary internal assets (`internal/`), open-source community solutions (`oss/`), and B2B client deliveries (`clients/`) across the `tupynambalucas-dev` organization. Nested directly inside the master [`tupynambalucas-dev/org`](https://github.com/tupynambalucas-dev/org) meta-repository at `projects/org/ecosystem/` (or cloned standalone), it coordinates autonomous product monorepos via [Mani](https://manicli.com) and multi-root IDE workspaces while preserving independent Git histories, branches, release lifecycles, and CI/CD pipelines.
 
 ---
 
 ## 1. Architecture Overview
 
-The organization operates under a two-tier meta-repository topology separating foundational enterprise governance (`org-core`) from the commercial and proprietary product portfolio (`org-ecosystem`):
+The organization operates under a hierarchical meta-repository topology where foundational enterprise governance (`org`) hosts the commercial and proprietary product portfolio (`org/ecosystem/`):
 
 ```mermaid
 flowchart TD
-    subgraph EnterpriseTier["Layer 0: Enterprise Foundation (org-core)"]
-        OrgCore["org-core (Enterprise Foundation)"]
+    subgraph EnterpriseTier["Layer 0: Master Enterprise Foundation (tupynambalucas-dev/org)"]
+        Org["org (Master Organization Host)"]
         DotGithub[".github & .github-private (Org Governance)"]
         AgentMesh["agent-mesh (Universal Agent Mesh)"]
         Platform["platform (Core Monorepo)"]
         Docs["docs (Documentation Hub)"]
-        Workstation["workstation (WSL2 & CLI Suite)"]
-        OrgCore --> DotGithub
-        OrgCore --> AgentMesh
-        OrgCore --> Platform
-        OrgCore --> Docs
-        OrgCore --> Workstation
+        Foundation["foundation (WSL2 DaC, Identities & CLI Suite)"]
+        Org --> DotGithub
+        Org --> AgentMesh
+        Org --> Platform
+        Org --> Docs
+        Org --> Foundation
     end
 
-    subgraph PortfolioTier["Layer 1: Product Portfolio (org-ecosystem)"]
-        OrgEco["org-ecosystem (Ecosystem Orchestrator)"]
+    subgraph PortfolioTier["Layer 1: Product Portfolio (tupynambalucas-dev/ecosystem -> org/ecosystem/)"]
+        Eco["ecosystem (Ecosystem Orchestrator)"]
         Commercial["commercial/ (SaaS / Paid Services)"]
         Internal["internal/ (Proprietary Company Assets)"]
         OSS["oss/ (Open Source Community Tools)"]
+        Clients["clients/ (Corporate B2B Deliveries)"]
 
         Omnichannel["omnichannel (Turborepo Monorepo)"]
         EloOrganico["elo-organico (Turborepo Monorepo)"]
         Tessel["tessel (Turborepo Monorepo)"]
 
-        OrgEco --> Commercial
-        OrgEco --> Internal
-        OrgEco --> OSS
+        Eco --> Commercial
+        Eco --> Internal
+        Eco --> OSS
+        Eco --> Clients
 
         Commercial --> Omnichannel
         Commercial --> EloOrganico
         Internal --> Tessel
     end
 
-    EnterpriseTier -.->|"Provides Governance, CI Templates, Rules & AI Mesh"| PortfolioTier
+    Org -->|"Hosts at org/ecosystem/"| Eco
+    AgentMesh -.->|"Relative Plugin Resolution (../agent-mesh/plugins/packages)"| Eco
 ```
 
 ---
@@ -56,21 +59,22 @@ flowchart TD
 | [`elo-organico`](./commercial/elo-organico/README.md) | `commercial/elo-organico` | `main` | [`README.md`](./commercial/elo-organico/README.md) | [`AGENTS.md`](./commercial/elo-organico/AGENTS.md) | Commercial organic product sharing and community management platform (Turborepo Monorepo). |
 | [`tessel`](./internal/tessel/README.md) | `internal/tessel` | `main` | [`README.md`](./internal/tessel/README.md) | [`AGENTS.md`](./internal/tessel/AGENTS.md) | Proprietary hybrid spatial social ecosystem, WebGPU/Three.js 3D simulation engine, and distributed API core. |
 | `oss/*` | `oss/` | `main` | *(per project)* | *(per project)* | Open-source developer tools, public SDKs, and community extensions. |
+| `clients/*` | `clients/` | `main` | *(per project)* | *(per project)* | Corporate B2B client solutions delivered under `tupynambalucas-dev`. |
 
 ### Multi-Root IDE Workspace
 
-Open [`tupynambalucas-dev-ecosystem.code-workspace`](./tupynambalucas-dev-ecosystem.code-workspace) in VS Code or Antigravity IDE to mount all portfolio repositories (`org-ecosystem`, `omnichannel`, `elo-organico`, `tessel`) in a unified workspace with integrated Mani tasks.
+Open [`tupynambalucas-dev-ecosystem.code-workspace`](./tupynambalucas-dev-ecosystem.code-workspace) in VS Code or Antigravity IDE for a portfolio-focused workspace (`ecosystem`, `omnichannel`, `elo-organico`, `tessel`), or open [`../tupynambalucas-dev.code-workspace`](../tupynambalucas-dev.code-workspace) from the parent `org/` directory to mount the entire organization.
 
 ---
 
 ## 3. Environment, Secret & Plugin Governance
 
 1. **Secret Resolution via Infisical & `.env` Templates**:
-   Each managed product monorepo defines its own project-scoped Infisical environment and `.env.example` template. Secrets are injected at runtime via `infisical run --projectId <PROJECT_ID> --env dev -- <command>` or local `.env` files excluded from Git.
+   Each managed product monorepo defines its own project-scoped Infisical environment and `.env.example` template. Secrets are injected at runtime via `infisical run --projectId <PROJECT_ID> --env dev -- <command>` or local/ancestor `.env` files excluded from Git.
 2. **AI Agent Mesh Consumption (`agent-mesh`)**:
-   At the `org-ecosystem` meta-repository level, [`.agents/plugins.json`](./.agents/plugins.json) imports the 10 domain plugins and 8 sovereign MCP servers via `.agents/agent-mesh` (a local directory junction pointing to `../org-core/agent-mesh/plugins/packages` so the path remains confined to the `org-ecosystem` workspace root). When child product monorepos run in standalone mode, they consume `@tupynambalucas-dev/agent-mesh` via `catalogs.plugins-stack` (`'github:tupynambalucas-dev/agent-mesh'`) in `pnpm-workspace.yaml`.
+   At the `ecosystem` meta-repository level, [`.agents/plugins.json`](./.agents/plugins.json) imports the 11 domain plugins and 9 sovereign MCP servers directly via relative path `../agent-mesh/plugins/packages` (when nested inside `org/`) with fallback to `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages`. Child product monorepos (`commercial/*`, `internal/*`) resolve plugins via `../../../agent-mesh/plugins/packages` or `node_modules/@tupynambalucas-dev/agent-mesh/plugins/packages` (`catalogs.plugins-stack`: `'github:tupynambalucas-dev/agent-mesh'`).
 3. **Mani Ignore & Search Indexing Invariant**:
-   [`mani.yaml`](./mani.yaml) enforces `sync_gitignore: false`. Managed repository directories (`commercial/`, `internal/`, `oss/`) are ignored in [`.gitignore`](./.gitignore) while explicitly un-ignored in [`.ignore`](./.ignore) and [`.rgignore`](./.rgignore) so `@` file mentions and workspace search index all portfolio code seamlessly.
+   [`mani.yaml`](./mani.yaml) enforces `sync_gitignore: false` and `ignore_non_existing: true`. Managed repository directories (`commercial/`, `internal/`, `oss/`, `clients/`) are ignored in [`.gitignore`](./.gitignore) while explicitly un-ignored in [`.ignore`](./.ignore) and [`.rgignore`](./.rgignore) so `@` file mentions and workspace search index all portfolio code seamlessly.
 
 ---
 
@@ -91,19 +95,22 @@ scoop install mani
 
 ### Workspace Initialization
 
-Clone the ecosystem orchestrator and synchronize portfolio projects (all at once or selectively by category tag):
+Synchronize `ecosystem` directly from the parent `tupynambalucas-dev/org` orchestrator (recommended) or clone standalone:
 
 ```bash
-git clone git@github.com:tupynambalucas-dev/org-ecosystem.git
-cd org-ecosystem
+# Option A: From parent tupynambalucas-dev/org root
+mani sync --tags ecosystem
 
-# Synchronize all portfolio repositories
+# Option B: Standalone or scoped inside org/ecosystem
+git clone git@github.com:tupynambalucas-dev/ecosystem.git
+cd ecosystem
 mani sync
 
 # Or synchronize selectively by portfolio tier tag
 mani sync --tags commercial
 mani sync --tags internal
 mani sync --tags oss
+mani sync --tags clients
 ```
 
 ---
@@ -113,25 +120,27 @@ mani sync --tags oss
 | Command | Target Scope | Description |
 | :--- | :--- | :--- |
 | `mani sync` | All repositories | Clones and synchronizes all portfolio repositories declared in [`mani.yaml`](./mani.yaml). |
-| `mani sync --tags <tag>` | Tagged subset | Synchronizes only repositories matching `commercial`, `internal`, or `oss`. |
-| `mani run status` | All repositories | Executes `git status -s` across all portfolio repositories. |
-| `mani run fetch` | All repositories | Fetches remote updates and prunes stale references across all projects. |
-| `mani run pull` | All repositories | Pulls latest `main` branch updates across all portfolio projects. |
-| `mani run branch` | All repositories | Displays the active Git branch for each portfolio repository in a table. |
+| `mani sync --tags <tag>` | Tagged subset | Synchronizes only repositories matching `commercial`, `internal`, `oss`, or `clients`. |
+| `mani run status` | All synced repos | Executes `git status -s` in parallel across all portfolio repositories. |
+| `mani run dirty` | Dirty repos only | Displays a formatted table of only repositories containing uncommitted changes. |
+| `mani run overview` | All synced repos | Displays a consolidated audit table with active branch, dirty status, and latest commit. |
+| `mani run fetch` | All synced repos | Fetches remote updates and prunes stale references across all projects. |
+| `mani run pull` | All synced repos | Pulls latest `main` branch updates across all portfolio projects. |
+| `mani run branch` | All synced repos | Displays the active Git branch for each portfolio repository in a table. |
 
 ```bash
 # Execute daily multi-repository status and synchronization checks
 mani run status
+mani run overview
 mani run fetch
 mani run pull
-mani run branch
 ```
 
 ---
 
 ## 6. Governance & Contributing Standards
 
-All development across `org-ecosystem` and its portfolio repositories must comply with organizational governance:
+All development across `ecosystem` and its portfolio repositories must comply with organizational governance:
 
 1. **Cryptographic Commit Signing**: All Git commits and annotated tags MUST be signed using SSH (`git commit -S -m "..."`). Unsigned commits are rejected by repository rulesets.
 2. **Conventional Commits**: Commit messages must follow the Conventional Commits v1.0.0 specification (`<type>(<scope>): <description>`).

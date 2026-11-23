@@ -1,16 +1,19 @@
 {
-  "name": "@tupynambalucas-dev/org-ecosystem",
-  "version": "1.0.0",
+  "name": "@tupynambalucas-dev/ecosystem",
+  "version": "1.1.0",
   "private": true,
   "license": "Apache-2.0",
-  "description": "Product portfolio and solutions ecosystem meta-repository orchestrating omnichannel, tessel, and OSS services via Mani.",
+  "description": "Product portfolio and solutions ecosystem sub-meta-repository orchestrating omnichannel, elo-organico, tessel, OSS, and B2B client services via Mani.",
   "type": "module",
   "scripts": {
     "sync": "mani sync",
     "sync:commercial": "mani sync --tags commercial",
     "sync:internal": "mani sync --tags internal",
     "sync:oss": "mani sync --tags oss",
+    "sync:clients": "mani sync --tags clients",
     "status": "mani run status",
+    "dirty": "mani run dirty",
+    "overview": "mani run overview",
     "pull": "mani run pull",
     "fetch": "mani run fetch",
     "branch": "mani run branch"

@@ -1,4 +1,4 @@
-# Changelog - @tupynambalucas-dev/org-ecosystem
+# Changelog - @tupynambalucas-dev/ecosystem
 
 <!-- changelog-start -->
 

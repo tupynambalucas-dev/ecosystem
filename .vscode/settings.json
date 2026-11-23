@@ -10,7 +10,7 @@
     "**/.turbo": true
   },
   "files.exclude": {
-    "**/.git": false
+    "**/.git": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,

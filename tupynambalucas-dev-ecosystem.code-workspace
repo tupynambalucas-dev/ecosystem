@@ -1,7 +1,7 @@
 {
   "folders": [
     {
-      "name": "org-ecosystem (Ecosystem Orchestrator)",
+      "name": "ecosystem (Ecosystem Orchestrator)",
       "path": "."
     },
     {
@@ -30,7 +30,9 @@
       "**/.turbo": true
     },
     "files.exclude": {
-      "**/.git": false
+      "commercial": true,
+      "internal": true,
+      "**/.git": true
     },
     "files.watcherExclude": {
       "**/.git/objects/**": true,
@@ -64,7 +66,7 @@
           "command": "wt.exe",
           "args": [
             "-d",
-            "${workspaceFolder:org-ecosystem (Ecosystem Orchestrator)}",
+            "${workspaceFolder:ecosystem (Ecosystem Orchestrator)}",
             "powershell.exe",
             "-NoExit",
             "-Command",
@@ -83,6 +85,12 @@
         "label": "Mani: Check Git Status",
         "type": "shell",
         "command": "mani run status",
+        "problemMatcher": []
+      },
+      {
+        "label": "Mani: Audit Overview Table",
+        "type": "shell",
+        "command": "mani run overview",
         "problemMatcher": []
       },
       {
